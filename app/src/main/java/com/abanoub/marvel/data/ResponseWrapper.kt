@@ -1,5 +1,6 @@
 package com.abanoub.marvel.data
 
+import android.util.Log
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -46,7 +47,7 @@ abstract class ResponseWrapper<T>(baseBaseCallback: BaseCallBack) :
     }
 
     override fun onFailure(call: Call<T>, t: Throwable) {
-        t.printStackTrace()
+        Log.e("onFailure: ",t.message!! )
         baseBaseCallback.onDataNotAvailable(null, null)
     }
 

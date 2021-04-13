@@ -7,6 +7,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object Client {
+
+    const val API_KEY =   "7005f73c19988d76c95c6e96a7e85462"
+    const val HASH_KEY =   "539d97ebd971bc3172de8fb44a2b66cf"
+    const val TIME_STAMP =   "1"
+    const val CHARACTERS = "characters"
+
     const val LANG = "{lang}/"
     const val HOME = LANG + "home/"
     fun getInstance(): Retrofit {

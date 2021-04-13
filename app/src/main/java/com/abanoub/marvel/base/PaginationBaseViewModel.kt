@@ -24,4 +24,7 @@ open class PaginationBaseViewModel(application: Application) : BaseViewModel(app
     fun getProductsLiveData(): MutableLiveData<List<Movie>>? {
         return productsLiveData
     }
+    open fun isLoading(): Boolean {
+        return loadingProgress.value != null && loadingProgress.value!!
+    }
 }

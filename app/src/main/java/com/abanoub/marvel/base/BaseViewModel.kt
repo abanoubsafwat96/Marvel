@@ -14,11 +14,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     var showMessage = MutableLiveData<String>()
     var showMessageRes = MutableLiveData<Int>()
 
-    fun showHideLoadingProgress(
-        shouldClearList: Boolean,
-        value: Boolean,
-        enableLoadingProgress: Boolean
-    ) {
+    fun showHideLoadingProgress(shouldClearList: Boolean, value: Boolean, enableLoadingProgress: Boolean) {
         if (shouldClearList) {
             if (enableLoadingProgress) loadingProgress.setValue(value)
         } else paginationLoadingProgress.setValue(value)
@@ -36,5 +32,4 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
             showMessage.setValue(errorMsg)
         }
     }
-
 }

@@ -12,7 +12,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -25,12 +25,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", 'BASE_URL', '"http://gateway.marvel.com/v1/public/"'
+            buildConfigField "String", 'BASE_URL', '"https://gateway.marvel.com/v1/public/"'
         }
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", 'BASE_URL', '"http://gateway.marvel.com/v1/public/"'
+            buildConfigField "String", 'BASE_URL', '"https://gateway.marvel.com/v1/public/"'
         }
 
     }
