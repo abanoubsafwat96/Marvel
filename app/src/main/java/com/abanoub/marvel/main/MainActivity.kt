@@ -1,15 +1,21 @@
 package com.abanoub.marvel.main
 
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.abanoub.marvel.R
-import com.abanoub.marvel.base.ParentActivity
+import com.abanoub.marvel.base.BaseActivity
 
-class MainActivity : ParentActivity() {
+class MainActivity : BaseActivity<MainViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+    }
+
+    override fun getViewModel(): MainViewModel {
+        return ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())
+        ).get(MainViewModel::class.java)
     }
 }
