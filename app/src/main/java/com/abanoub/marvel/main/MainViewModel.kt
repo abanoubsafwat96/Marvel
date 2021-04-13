@@ -13,12 +13,13 @@ class MainViewModel(application: Application) : PaginationBaseViewModel(applicat
     var charactersLiveData = MutableLiveData<ArrayList<Character>>()
 
     fun getCharacters(shouldClearList: Boolean) {
+        paginationLoadingProgress.value=true
         GetCharacterRemote().getCharacters(
             if (shouldClearList) 0 else offset + 20,
             this,
             object : GetCharacterRemote.OnCallback {
                 override fun onCallback(body: Characters?) {
-
+                    paginationLoadingProgress.value=false
                     offset = if (shouldClearList) 0 else offset + 20
                     isaLastPage = body!!.total!! <= body!!.offset!! + 20
                     val value: ArrayList<Character>? = charactersLiveData.getValue()
