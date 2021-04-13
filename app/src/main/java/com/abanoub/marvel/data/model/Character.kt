@@ -1,15 +1,24 @@
 package com.abanoub.marvel.data.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import retrofit2.http.Url
 
 
-class Character {
+class Character() :Parcelable {
 
     private var id: Int? = null
     private var name: String? = null
     private var description: String? = null
     private var modified: String? = null
     private var thumbnail: Thumbnail? = null
+
+    constructor(parcel: Parcel) : this() {
+        id = parcel.readValue(Int::class.java.classLoader) as? Int
+        name = parcel.readString()
+        description = parcel.readString()
+        modified = parcel.readString()
+    }
 
     fun getId(): Int? {
         return id
@@ -45,5 +54,26 @@ class Character {
 
     fun getThumbnails(): Thumbnail? {
         return thumbnail
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeValue(id)
+        parcel.writeString(name)
+        parcel.writeString(description)
+        parcel.writeString(modified)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Character> {
+        override fun createFromParcel(parcel: Parcel): Character {
+            return Character(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Character?> {
+            return arrayOfNulls(size)
+        }
     }
 }

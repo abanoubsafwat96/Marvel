@@ -1,5 +1,6 @@
 package com.abanoub.marvel.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abanoub.marvel.R
 import com.abanoub.marvel.base.BaseActivity
 import com.abanoub.marvel.data.model.Character
+import com.abanoub.marvel.detailed.DetailedActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<MainViewModel>() {
@@ -17,9 +19,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
         setContentView(R.layout.activity_main)
 
         var list = ArrayList<Character>()
-        recyclerView.adapter=CharactersAdapter(list,object :CharactersAdapter.OnItemClick{
+        recyclerView.adapter = CharactersAdapter(list, object : CharactersAdapter.OnItemClick {
             override fun onItemClicked(character: Character) {
-
+                startDetailedActivity(character)
             }
         })
 
@@ -52,6 +54,12 @@ class MainActivity : BaseActivity<MainViewModel>() {
             })
             getViewModel().getCharacters(true)
         }
+    }
+
+    private fun startDetailedActivity(character: Character) {
+        var intent = Intent(this, DetailedActivity::class.java)
+        intent.putExtra("character", character)
+        startActivity(intent)
     }
 
     fun setPaginationProgressViewVisibility(value: Int) {

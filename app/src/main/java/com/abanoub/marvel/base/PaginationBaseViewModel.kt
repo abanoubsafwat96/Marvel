@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 
 open class PaginationBaseViewModel(application: Application) : BaseViewModel(application) {
 
-    protected var pageNum = 0
+    protected var offset = 0
     protected var isaLastPage = false
     private val onLoadMoreItems = MutableLiveData<Any>()
     private val productsLiveData =

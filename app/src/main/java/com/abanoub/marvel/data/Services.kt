@@ -12,6 +12,7 @@ interface Services {
     fun getCharacters(
         @Query("ts") timeStamp: String,
         @Query("apikey") api_key: String,
-        @Query("hash") hash_key: String
+        @Query("hash") hash_key: String,
+        @Query("offset") offset: Int
     ): Call<ApiResponse>
 }

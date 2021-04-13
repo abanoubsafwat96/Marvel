@@ -49,6 +49,8 @@ class CharactersAdapter(var list: ArrayList<Character>, var itemCallback: OnItem
             .into(holder.itemView.pic)
 
         holder.itemView.rootView.clipToOutline=true
+
+        holder.itemView.setOnClickListener{itemCallback.onItemClicked(item)}
     }
 
     public interface OnItemClick {
