@@ -18,6 +18,7 @@ class Character() :Parcelable {
         name = parcel.readString()
         description = parcel.readString()
         modified = parcel.readString()
+        thumbnail = parcel.readParcelable(Thumbnail::class.java.classLoader)
     }
 
     fun getId(): Int? {
@@ -61,6 +62,7 @@ class Character() :Parcelable {
         parcel.writeString(name)
         parcel.writeString(description)
         parcel.writeString(modified)
+        parcel.writeParcelable(thumbnail, flags)
     }
 
     override fun describeContents(): Int {

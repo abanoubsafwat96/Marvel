@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.abanoub.marvel.base.PaginationBaseViewModel
 import com.abanoub.marvel.data.model.Character
-import com.abanoub.marvel.data.model.Characters
+import com.abanoub.marvel.data.model.Results
 import com.abanoub.marvel.data.remote.GetCharacterRemote
 import java.util.ArrayList
 
@@ -18,7 +18,7 @@ class MainViewModel(application: Application) : PaginationBaseViewModel(applicat
             if (shouldClearList) 0 else offset + 20,
             this,
             object : GetCharacterRemote.OnCallback {
-                override fun onCallback(body: Characters?) {
+                override fun onCallback(body: Results<Character>?) {
                     paginationLoadingProgress.value=false
                     offset = if (shouldClearList) 0 else offset + 20
                     isaLastPage = body!!.total!! <= body!!.offset!! + 20

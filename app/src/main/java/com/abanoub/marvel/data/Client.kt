@@ -13,8 +13,6 @@ object Client {
     const val TIME_STAMP =   "1"
     const val CHARACTERS = "characters"
 
-    const val LANG = "{lang}/"
-    const val HOME = LANG + "home/"
     fun getInstance(): Retrofit {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
