@@ -18,6 +18,14 @@ interface Services {
         @Query("offset") offset: Int
     ): Call<ApiResponse<Character>>
 
+    @GET(Client.CHARACTERS)
+    fun searchCharacters(
+        @Query("name") searchName: String,
+        @Query("ts") timeStamp: String,
+        @Query("apikey") api_key: String,
+        @Query("hash") hash_key: String
+    ): Call<ApiResponse<Character>>
+
     @GET(Client.CHARACTERS + "/{characterId}/{data}")
     fun getCharacterData(
         @Path("characterId") characterId: Int,

@@ -8,5 +8,6 @@
     <color name="grey">#9E9E9E</color>
     <color name="dark_grey">#424242</color>
     <color name="dark_pink">#ff898e</color>
-
+    <color name="light_black">#2d2d2d</color>
+    <color name="nbety">#8e2025</color>
 </resources>

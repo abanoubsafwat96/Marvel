@@ -9,5 +9,6 @@
     <string name="events">Events</string>
     <string name="series">Series</string>
     <string name="stories">Stories</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
