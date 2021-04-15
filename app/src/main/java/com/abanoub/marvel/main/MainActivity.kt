@@ -2,10 +2,7 @@ package com.abanoub.marvel.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +13,6 @@ import com.abanoub.marvel.data.remote.SearchCharacterRemote
 import com.abanoub.marvel.detailed.DetailedActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
-import org.w3c.dom.Text
 
 class MainActivity : BaseActivity<MainViewModel>() {
 
@@ -85,17 +81,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
             onCancelBtnClicked()
         }
 
-        search_Et.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                search(s.toString())
-            }
-        })
+        search_Et.addTextChangedListener(getViewModel().watcher)
 
         getViewModel().onSearchLiveData.observe(this, Observer { characters ->
             if (characters == null) return@Observer
@@ -117,10 +103,6 @@ class MainActivity : BaseActivity<MainViewModel>() {
         search_Et.setText("")
         search_list.clear()
         search_recyclerView.adapter = null
-    }
-
-    private fun search(txt: String) {
-        getViewModel().search(txt)
     }
 
     private fun setToolbarVisibility(value: Int) {
