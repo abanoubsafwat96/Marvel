@@ -1,15 +1,16 @@
 package com.abanoub.marvel.main
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.abanoub.marvel.R
 import com.abanoub.marvel.base.BaseActivity
 import com.abanoub.marvel.data.model.Character
-import com.abanoub.marvel.data.remote.SearchCharacterRemote
 import com.abanoub.marvel.detailed.DetailedActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -63,14 +64,14 @@ class MainActivity : BaseActivity<MainViewModel>() {
     }
 
     private fun initSearch() {
+        search_list = ArrayList()
         searchBtn.setOnClickListener {
             setToolbarVisibility(View.INVISIBLE)
             setSearchConstraintLayoutVisibility(View.VISIBLE)
             setSearchRecyclerViewVisibility(View.VISIBLE)
 
-            search_list = ArrayList()
             search_recyclerView.adapter =
-                SearchAdapter(search_list, object : SearchAdapter.OnItemClick {
+                SearchAdapter(search_list, search_Et.text.toString(), object : SearchAdapter.OnItemClick {
                     override fun onItemClicked(character: Character) {
                         startDetailedActivity(character)
                     }

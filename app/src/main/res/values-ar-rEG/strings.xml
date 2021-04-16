@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مارفل</string>
+    <string name="search">بحث</string>
+    <string name="offline">أنت غير متصل ، تحقق من شبكتك</string>
+    <string name="serverError">خطأ في الخادم</string>
+    <string name="loading">جاري التحميل انتظر من فضلك...</string>
+    <string name="description">الوصف</string>
+    <string name="comics">الكوميكس</string>
+    <string name="events">الأحداث</string>
+    <string name="series">السلاسل</string>
+    <string name="stories">القصص</string>
+    <string name="cancel">إلغاء</string>
+    <string name="search_for_a_character">ابحث عن شخصية ...</string>
+</resources>

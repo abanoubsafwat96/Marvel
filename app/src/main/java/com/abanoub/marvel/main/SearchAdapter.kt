@@ -1,8 +1,10 @@
 package com.abanoub.marvel.main
 
 import android.content.Context
-import android.graphics.drawable.BitmapDrawable
+import android.graphics.Color
 import android.os.Build
+import android.text.SpannableString
+import android.text.style.BackgroundColorSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +13,11 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.abanoub.marvel.R
 import com.abanoub.marvel.data.model.Character
-import com.abanoub.marvel.utils.Utils
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_splash.view.*
 import kotlinx.android.synthetic.main.character_single_item.view.*
 
 
-class SearchAdapter(var list: ArrayList<Character>, var itemCallback: OnItemClick) :
+class SearchAdapter(var list: ArrayList<Character>,var searchTxt:String, var itemCallback: OnItemClick) :
     RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -42,7 +42,11 @@ class SearchAdapter(var list: ArrayList<Character>, var itemCallback: OnItemClic
             item.getThumbnails()?.getPath() + "." + item.getThumbnails()?.getExtension()
 
         Log.e("onBindViewHolder: ", imageLink)
-        holder.itemView.name.setText(item.getName())
+
+        val str = SpannableString(item.getName())
+        str.setSpan(BackgroundColorSpan(Color.RED), 0, item.getName()!!.length, 0)
+        holder.itemView.name.setText(str)
+
         Glide.with(holder.itemView.context)
             .load(imageLink)
             .placeholder(R.drawable.image_placeholder)

@@ -1,19 +1,14 @@
 package com.abanoub.marvel.main
 
 import android.content.Context
-import android.graphics.drawable.BitmapDrawable
-import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.abanoub.marvel.R
 import com.abanoub.marvel.data.model.Character
-import com.abanoub.marvel.utils.Utils
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_splash.view.*
 import kotlinx.android.synthetic.main.character_single_item.view.*
 
 
