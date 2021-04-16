@@ -44,6 +44,8 @@
             android:drawableStart="@drawable/ic_baseline_search_white_24"
             android:drawablePadding="5dp"
             android:paddingStart="5dp"
+            android:hint="@string/search_for_a_character"
+            android:textColorHint="@color/white"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/cancel_button"

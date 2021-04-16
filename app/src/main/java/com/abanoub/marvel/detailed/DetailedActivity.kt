@@ -1,17 +1,13 @@
 package com.abanoub.marvel.detailed
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.abanoub.marvel.R
 import com.abanoub.marvel.base.BaseActivity
 import com.abanoub.marvel.data.model.Character
-import com.abanoub.marvel.data.model.CharacterData
-import com.abanoub.marvel.main.MainViewModel
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detailed.*
-import kotlinx.android.synthetic.main.character_single_item.view.*
 
 class DetailedActivity : BaseActivity<DetailedViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +56,7 @@ class DetailedActivity : BaseActivity<DetailedViewModel>() {
     }
 
     private fun openImageDialog(imageLink: String) {
-        ViewImageFragment(this, imageLink).show()
+        ViewImageDialog(this, imageLink).show()
     }
 
     private fun getSeries(characterId: Int) {

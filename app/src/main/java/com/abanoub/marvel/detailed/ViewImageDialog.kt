@@ -6,17 +6,16 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import com.abanoub.marvel.R
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.fragment_view_image.*
+import kotlinx.android.synthetic.main.dialog_view_image.*
 
-class ViewImageFragment(context: Context, var imagePath: String) : Dialog(context, android.R.style.Theme_Black_NoTitleBar) {
+class ViewImageDialog(context: Context, var imagePath: String) : Dialog(context, android.R.style.Theme_Black_NoTitleBar) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.fragment_view_image)
+        setContentView(R.layout.dialog_view_image)
 
         window?.apply {
             setCancelable(true)

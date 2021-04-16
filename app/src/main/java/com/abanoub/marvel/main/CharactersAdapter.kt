@@ -35,7 +35,6 @@ class CharactersAdapter(var list: ArrayList<Character>, var itemCallback: OnItem
         return list.size
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         var item = list.get(position)
         var imageLink =

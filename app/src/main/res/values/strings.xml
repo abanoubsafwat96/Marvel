@@ -10,5 +10,6 @@
     <string name="series">Series</string>
     <string name="stories">Stories</string>
     <string name="cancel">Cancel</string>
+    <string name="search_for_a_character">Search for a character...</string>
 
 </resources>
