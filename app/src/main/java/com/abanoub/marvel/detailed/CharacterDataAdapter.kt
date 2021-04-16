@@ -18,7 +18,10 @@ import kotlinx.android.synthetic.main.activity_splash.view.*
 import kotlinx.android.synthetic.main.character_single_item.view.*
 
 
-class CharacterDataAdapter(var list: ArrayList<CharacterData>) :
+class CharacterDataAdapter(
+    var list: ArrayList<CharacterData>,
+    var onClickCallback: OnClickCallback
+) :
     RecyclerView.Adapter<CharacterDataAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -52,5 +55,13 @@ class CharacterDataAdapter(var list: ArrayList<CharacterData>) :
             .placeholder(R.drawable.image_placeholder)
             .into(holder.itemView.pic)
         holder.itemView.rootView.clipToOutline = true
+
+        holder.itemView.setOnClickListener{
+            onClickCallback.onClick(imageLink)
+        }
+    }
+
+    interface OnClickCallback {
+        fun onClick(imageLink: String)
     }
 }

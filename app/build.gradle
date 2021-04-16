@@ -67,4 +67,6 @@ dependencies {
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1"
+
+    implementation 'com.jsibbold:zoomage:1.2.0'
 }

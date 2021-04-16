@@ -23,7 +23,8 @@ class DetailedActivity : BaseActivity<DetailedViewModel>() {
     }
 
     private fun initViews(character: Character?) {
-        var imageLink = character!!.getThumbnails()!!.getPath() + "." + character.getThumbnails()!!.getExtension()
+        var imageLink = character!!.getThumbnails()!!.getPath() + "." + character.getThumbnails()!!
+            .getExtension()
         Glide.with(this)
             .load(imageLink)
             .placeholder(R.drawable.image_placeholder)
@@ -32,11 +33,11 @@ class DetailedActivity : BaseActivity<DetailedViewModel>() {
         name.setText(character.getName())
         description.setText(character.getDescription())
 
-        backBtn.setOnClickListener{
+        backBtn.setOnClickListener {
             onBackPressed()
         }
 
-        if (isConnected()){
+        if (isConnected()) {
             getComics(character.getId()!!)
             getEvents(character.getId()!!)
             getSeries(character.getId()!!)
@@ -45,39 +46,63 @@ class DetailedActivity : BaseActivity<DetailedViewModel>() {
     }
 
     private fun getStories(characterId: Int) {
-        getViewModel().storiesLiveData.observe(this, Observer {characterData ->
-            if (characterData==null) return@Observer
+        getViewModel().storiesLiveData.observe(this, Observer { characterData ->
+            if (characterData == null) return@Observer
 
-            stories_recyclerView.adapter=CharacterDataAdapter(characterData)
+            stories_recyclerView.adapter =
+                CharacterDataAdapter(characterData, object : CharacterDataAdapter.OnClickCallback {
+                    override fun onClick(imageLink: String) {
+                        openImageDialog(imageLink)
+                    }
+                })
         })
-        getViewModel().getCharacterData(characterId ,"stories")
+        getViewModel().getCharacterData(characterId, "stories")
+    }
+
+    private fun openImageDialog(imageLink: String) {
+        ViewImageFragment(this, imageLink).show()
     }
 
     private fun getSeries(characterId: Int) {
-        getViewModel().seriesLiveData.observe(this, Observer {characterData ->
-            if (characterData==null) return@Observer
+        getViewModel().seriesLiveData.observe(this, Observer { characterData ->
+            if (characterData == null) return@Observer
 
-            series_recyclerView.adapter=CharacterDataAdapter(characterData)
+            series_recyclerView.adapter =
+                CharacterDataAdapter(characterData, object : CharacterDataAdapter.OnClickCallback {
+                    override fun onClick(imageLink: String) {
+                        openImageDialog(imageLink)
+                    }
+                })
         })
-        getViewModel().getCharacterData(characterId ,"series")
+        getViewModel().getCharacterData(characterId, "series")
     }
 
     private fun getEvents(characterId: Int) {
-        getViewModel().eventsLiveData.observe(this, Observer {characterData ->
-            if (characterData==null) return@Observer
+        getViewModel().eventsLiveData.observe(this, Observer { characterData ->
+            if (characterData == null) return@Observer
 
-            events_recyclerView.adapter=CharacterDataAdapter(characterData)
+            events_recyclerView.adapter =
+                CharacterDataAdapter(characterData, object : CharacterDataAdapter.OnClickCallback {
+                    override fun onClick(imageLink: String) {
+                        openImageDialog(imageLink)
+                    }
+                })
         })
-        getViewModel().getCharacterData(characterId ,"events")
+        getViewModel().getCharacterData(characterId, "events")
     }
 
     private fun getComics(characterId: Int) {
-        getViewModel().comicsLiveData.observe(this, Observer {characterData ->
-            if (characterData==null) return@Observer
+        getViewModel().comicsLiveData.observe(this, Observer { characterData ->
+            if (characterData == null) return@Observer
 
-            comics_recyclerView.adapter=CharacterDataAdapter(characterData)
+            comics_recyclerView.adapter =
+                CharacterDataAdapter(characterData, object : CharacterDataAdapter.OnClickCallback {
+                    override fun onClick(imageLink: String) {
+                        openImageDialog(imageLink)
+                    }
+                })
         })
-        getViewModel().getCharacterData(characterId ,"comics")
+        getViewModel().getCharacterData(characterId, "comics")
     }
 
     override fun getViewModel(): DetailedViewModel {
